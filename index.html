@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Encriptador de texto</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <img class="logo" src="img/logo.png" alt="logo-alura" />
+      </header>
+
+      <main class="main">
+        <form>
+          <div class="form-content">
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="Ingrese el texto aquí"
+            ></textarea>
+
+            <div>
+              <div class="img-paragraph">
+                <span>
+                  <img src="img/bi_exclamation-circle-fill.png" alt="" />
+                </span>
+                <p class="paragraph">Solo letras minúsculas y sin acentos.</p>
+              </div>
+
+              <div class="buttons">
+                <button class="btn btn-light btn-encriptar">Encriptar</button>
+                <button class="btn btn-light btn-desencriptar">
+                  Desencriptar
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <aside>
+          <div class="content-aside">
+            <img src="img/muñeco.png" alt="muñeco" class="muneco" />
+            <p class="title">Ningún mensaje fue encontrado</p>
+            <p class="subtitle">
+              Ingresa el texto que desees encriptar o desencriptar.
+            </p>
+          </div>
+        </aside>
+      </main>
+      <footer>
+        <p>©Copyright Maribel Torres</p>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

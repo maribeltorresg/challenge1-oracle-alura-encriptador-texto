@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --dark-blue: #0a3871;
+}
+
+body {
+  background-color: #f3f5fc;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: auto;
+  padding: 8px 16px;
+}
+
+/* Header */
+header .logo {
+  margin: 30px 0;
+  width: 32px;
+}
+
+/* Main */
+.main {
+  flex-grow: 1;
+}
+
+/* Form */
+
+form {
+  flex-grow: 1;
+}
+
+.form-content {
+  max-width: 768px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Textarea */
+
+textarea {
+  background-color: #f3f5fc;
+  border: none;
+  color: var(--dark-blue);
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  padding-top: 40px;
+}
+
+/*  */
+.img-paragraph {
+  align-items: center;
+  display: flex;
+}
+
+.paragraph {
+  color: #495057;
+  font-size: 13px;
+  margin: 15px 0 15px 6px;
+  opacity: 0.8;
+}
+
+/* Button */
+.btn {
+  border-radius: 24px;
+  border: none;
+  /* height: 67px; */
+  font-size: 16px;
+  line-height: 19px;
+  margin-bottom: 20px;
+  padding: 24px;
+  width: 100%;
+}
+
+.btn-dark {
+  background-color: var(--dark-blue);
+  color: #fff;
+}
+
+.btn-light {
+  background-color: #d8dfe8;
+  border: 1px solid #0a3871;
+  color: var(--dark-blue);
+}
+
+/* Aside */
+
+aside {
+  box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+  border-radius: 32px;
+  background-color: #fff;
+  max-width: 768px;
+  margin: auto;
+  padding: 32px;
+}
+
+.content-aside {
+  text-align: center;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--dark-blue);
+  opacity: 1; /* Firefox */
+  font-size: 32px;
+  font-family: "Inter", sans-serif;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--dark-blue);
+  font-size: 32px;
+  font-family: "Inter", sans-serif;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--dark-blue);
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+}
+
+aside .muneco {
+  display: none;
+}
+
+aside .title {
+  color: #343a40;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 32px 0 16px 0;
+}
+
+aside .subtitle {
+  color: #495057;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+footer p {
+  color: var(--dark-blue);
+  font-weight: bold;
+  padding: 25px 0;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .buttons {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 992px) {
+  .main {
+    display: flex;
+    gap: 16px;
+  }
+
+  aside {
+    background-color: #fff;
+    box-shadow: 0px 24px 32px -8px rgb(0 0 0 / 8%);
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    max-width: 400px;
+    min-width: 400px;
+    padding: 20px;
+  }
+  aside .muneco {
+    display: block;
+  }
+}
