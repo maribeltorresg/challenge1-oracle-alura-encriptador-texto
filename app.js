@@ -1,7 +1,31 @@
 const buttonEncriptar = document.querySelector(".btn-encriptar");
 const buttonDesencriptar = document.querySelector(".btn-desencriptar");
-const textarea = document.querySelector("textarea");
+const textarea = document.querySelector(".textarea");
 const aside = document.querySelector("aside");
+const texareaAside = document.querySelector(".texareaAside");
+const contentAside = document.querySelector(".content-aside");
+
+function copy() {
+  let oldButton = document.getElementById("boton-copiar");
+  if (oldButton) {
+    console.log("klajdk");
+    return;
+  }
+  console.log("cuando no exite");
+
+  const btnCopy = document.createElement("button");
+  btnCopy.id = "boton-copiar";
+  btnCopy.innerText = "Copiar";
+  aside.appendChild(btnCopy);
+  btnCopy.classList.add("btn", "btn-light");
+
+  btnCopy.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    texareaAside.select();
+    document.execCommand("copy");
+  });
+}
 
 function encriptar() {
   buttonEncriptar.addEventListener("click", (e) => {
@@ -26,10 +50,14 @@ function encriptar() {
       }
     }
 
-    aside.textContent = textOutput;
+    contentAside.style.display = "none";
 
-    buttonEncriptar.classList.remove("btn-light");
-    buttonEncriptar.classList.add("btn-dark");
+    aside.style.justifyContent = "space-between";
+    texareaAside.style.display = "block";
+    texareaAside.classList.add("textarea");
+    texareaAside.textContent = textOutput;
+
+    copy();
   });
 }
 
@@ -43,7 +71,6 @@ function descencriptar() {
     let textOutput = "";
 
     for (let i = 0; i < textareaValue.length; i++) {
-      // console.log(textareaValue[i] + i);
       if (textareaValue[i] === "a") {
         textOutput += textareaValue[i];
         i += 1;
@@ -63,10 +90,15 @@ function descencriptar() {
         textOutput += textareaValue[i];
       }
     }
-    aside.textContent = textOutput;
-    aside.style.display = "block";
-    buttonDesencriptar.classList.remove("btn-light");
-    buttonDesencriptar.classList.add("btn-dark");
+
+    contentAside.style.display = "none";
+    aside.style.justifyContent = "space-between";
+
+    texareaAside.style.display = "block";
+    texareaAside.classList.add("textarea");
+    texareaAside.textContent = textOutput;
+
+    copy();
   });
 }
 descencriptar();
