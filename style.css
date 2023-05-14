@@ -13,6 +13,18 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+textarea {
+  background-color: #f3f5fc;
+  border: none;
+  color: var(--dark-blue);
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  flex-grow: 1;
+  padding-top: 40px;
+  resize: none;
+  outline: none;
+}
+
 .container {
   height: 100vh;
   display: flex;
@@ -46,20 +58,6 @@ form {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-}
-
-/* Textarea */
-
-.textarea {
-  background-color: #f3f5fc;
-  border: none;
-  color: var(--dark-blue);
-  font-family: "Inter", sans-serif;
-  font-size: 32px;
-  flex-grow: 1;
-  padding-top: 40px;
-  resize: none;
-  outline: none;
 }
 
 /*  */
@@ -132,6 +130,11 @@ aside {
   text-align: center;
 }
 
+/* Ocultar content-aside */
+/* .ocultar {
+  display: none;
+} */
+
 aside .muneco {
   display: none;
 }
@@ -149,10 +152,34 @@ aside .subtitle {
   line-height: 24px;
 }
 
-.texareaAside {
+.textarea-salida {
   background-color: #fff;
   display: none;
 }
+
+.ocultar-instrucciones .content-aside {
+  display: none;
+}
+
+.ocultar-instrucciones .textarea-salida,
+.ocultar-instrucciones .boton-copiar {
+  display: block;
+}
+
+/* Mostrar el textarea con su contenido */
+/* .mostrar {
+  display: block;
+} */
+
+/* Ocultar el botón copiar */
+.boton-copiar {
+  display: none;
+}
+
+/* Mostrar el botón copiar */
+/* .mostrar-btn-copy {
+  display: block;
+} */
 
 /* Footer */
 footer p {
