@@ -5,34 +5,45 @@ const $aside = document.querySelector("aside");
 const $textareaSalida = document.querySelector(".textarea-salida");
 const $botonCopiar = document.querySelector(".boton-copiar");
 
+// Verificar que solo se ingrese texto en minuscula
+$textareaEntrada.addEventListener("input", () => {
+  let text = $textareaEntrada.value;
+  $textareaEntrada.value = text.toLowerCase();
+});
+
 $botonEncriptar.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // Texto a encriptar
-  let text = $textareaEntrada.value;
-  if (text === "") {
-    $aside.classList.remove("ocultar-instrucciones");
+  console.log(
+    "La aplicacion " +
+      (estaLista() ? "SI" : "NO") +
+      " esta lista para iniciar la encriptacion."
+  );
+
+  if (!estaLista()) {
+    mostrarInstrucciones();
     return;
   }
 
-  $aside.classList.add("ocultar-instrucciones");
+  ocultarInstrucciones();
 
+  // Texto a encriptar
+  let text = $textareaEntrada.value;
   $textareaSalida.textContent = encriptar(text);
 });
 
 $botonDesencriptar.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // Texto a desencriptar
-  let text = $textareaEntrada.value;
-  if (text === "") {
-    $aside.classList.remove("ocultar-instrucciones");
-
+  if (!estaLista()) {
+    mostrarInstrucciones();
     return;
   }
 
-  $aside.classList.add("ocultar-instrucciones");
+  ocultarInstrucciones();
 
+  // Texto a desencriptar
+  let text = $textareaEntrada.value;
   $textareaSalida.textContent = descencriptar(text);
 });
 
@@ -40,6 +51,24 @@ $botonCopiar.addEventListener("click", (e) => {
   e.preventDefault();
   copiar();
 });
+
+function mostrarInstrucciones() {
+  $aside.classList.remove("ocultar-instrucciones");
+}
+
+function ocultarInstrucciones() {
+  $aside.classList.add("ocultar-instrucciones");
+}
+
+function estaLista() {
+  // Texto a encriptar o desencriptar
+  let text = $textareaEntrada.value;
+  if (text !== "") {
+    return true;
+  }
+
+  return false;
+}
 
 function encriptar(text) {
   let textEncriptado = "";

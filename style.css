@@ -130,11 +130,6 @@ aside {
   text-align: center;
 }
 
-/* Ocultar content-aside */
-/* .ocultar {
-  display: none;
-} */
-
 aside .muneco {
   display: none;
 }
@@ -166,20 +161,10 @@ aside .subtitle {
   display: block;
 }
 
-/* Mostrar el textarea con su contenido */
-/* .mostrar {
-  display: block;
-} */
-
 /* Ocultar el botón copiar */
 .boton-copiar {
   display: none;
 }
-
-/* Mostrar el botón copiar */
-/* .mostrar-btn-copy {
-  display: block;
-} */
 
 /* Footer */
 footer p {
