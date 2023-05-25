@@ -5,46 +5,102 @@ const $aside = document.querySelector("aside");
 const $textareaSalida = document.querySelector(".textarea-salida");
 const $botonCopiar = document.querySelector(".boton-copiar");
 
-// Verificar que solo se ingrese texto en minuscula
-$textareaEntrada.addEventListener("input", () => {
-  let text = $textareaEntrada.value;
-  $textareaEntrada.value = text.toLowerCase();
+let textoCorrecto = true;
+
+$textareaEntrada.addEventListener("input", (event) => {
+  const letrasPermitidas = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+    " ",
+    ",",
+    ".",
+  ];
+  // Accede al valor actual del elemento de entrada
+  const valor = event.target.value;
+  let textArray = valor.split("");
+  for (let i = 0; i < textArray.length; i++) {
+    if (!letrasPermitidas.includes(textArray[i])) {
+      $textareaEntrada.classList.add("textarea-entrada-invalido");
+      textoCorrecto = false;
+      break;
+    } else {
+      $textareaEntrada.classList.remove("textarea-entrada-invalido");
+      textoCorrecto = true;
+    }
+  }
 });
 
 $botonEncriptar.addEventListener("click", (e) => {
   e.preventDefault();
 
-  console.log(
-    "La aplicacion " +
-      (estaLista() ? "SI" : "NO") +
-      " esta lista para iniciar la encriptacion."
-  );
+  // let classListTextareaEntrada = $textareaEntrada.classList;
 
-  if (!estaLista()) {
-    mostrarInstrucciones();
-    return;
+  // Verificar si tiene la clase "textarea-entrada-invalido"
+  // if (classListTextareaEntrada.contains("textarea-entrada-invalido")) {
+  //   return;
+  // }
+
+  if (textoCorrecto) {
+    console.log(
+      "La aplicacion " +
+        (estaLista() ? "SI" : "NO") +
+        " esta lista para iniciar la encriptacion."
+    );
+
+    if (!estaLista()) {
+      mostrarInstrucciones();
+      return;
+    }
+
+    ocultarInstrucciones();
+
+    // Texto a encriptar
+    let text = $textareaEntrada.value;
+    $textareaSalida.textContent = encriptar(text);
+    $textareaEntrada.value = "";
   }
-
-  ocultarInstrucciones();
-
-  // Texto a encriptar
-  let text = $textareaEntrada.value;
-  $textareaSalida.textContent = encriptar(text);
 });
 
 $botonDesencriptar.addEventListener("click", (e) => {
   e.preventDefault();
 
-  if (!estaLista()) {
-    mostrarInstrucciones();
-    return;
+  if (textoCorrecto) {
+    if (!estaLista()) {
+      mostrarInstrucciones();
+      return;
+    }
+
+    ocultarInstrucciones();
+
+    // Texto a desencriptar
+    let text = $textareaEntrada.value;
+    $textareaSalida.textContent = descencriptar(text);
+    $textareaEntrada.value = "";
   }
-
-  ocultarInstrucciones();
-
-  // Texto a desencriptar
-  let text = $textareaEntrada.value;
-  $textareaSalida.textContent = descencriptar(text);
 });
 
 $botonCopiar.addEventListener("click", (e) => {
@@ -120,104 +176,10 @@ function descencriptar(text) {
 
 function copiar() {
   $textareaSalida.select();
+
   document.execCommand("copy");
+  $botonCopiar.textContent = "Copiado!";
+  setTimeout(() => {
+    $botonCopiar.textContent = "Copiar";
+  }, 1000);
 }
-
-// function copy() {
-//   let oldButton = document.getElementById("boton-copiar");
-//   if (oldButton) {
-//     console.log("klajdk");
-//     return;
-//   }
-//   console.log("cuando no exite");
-
-//   // const btnCopy = document.createElement("button");
-//   // btnCopy.id = "boton-copiar";
-//   // btnCopy.innerText = "Copiar";
-//   // aside.appendChild(btnCopy);
-//   // btnCopy.classList.add("btn", "btn-light");
-
-//   btnCopy.addEventListener("click", (e) => {
-//     e.preventDefault();
-
-//     texareaAside.select();
-//     document.execCommand("copy");
-//   });
-// }
-
-// function encriptar() {
-//   buttonEncriptar.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     let textareaValue = textarea.value;
-
-//     let textOutput = "";
-
-//     for (let c of textareaValue) {
-//       if (c === "a") {
-//         textOutput += "ai";
-//       } else if (c === "e") {
-//         textOutput += "enter";
-//       } else if (c === "i") {
-//         textOutput += "imes";
-//       } else if (c === "o") {
-//         textOutput += "ober";
-//       } else if (c === "u") {
-//         textOutput += "ufat";
-//       } else {
-//         textOutput += c;
-//       }
-//     }
-
-//     contentAside.style.display = "none";
-
-//     aside.style.justifyContent = "space-between";
-//     texareaAside.style.display = "block";
-//     texareaAside.classList.add("textarea");
-
-//     texareaAside.textContent = textOutput;
-
-//     copy();
-//   });
-// }
-
-// encriptar();
-
-// function descencriptar() {
-//   buttonDesencriptar.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     let textareaValue = textarea.value;
-
-//     let textOutput = "";
-
-//     for (let i = 0; i < textareaValue.length; i++) {
-//       if (textareaValue[i] === "a") {
-//         textOutput += textareaValue[i];
-//         i += 1;
-//       } else if (textareaValue[i] === "e") {
-//         textOutput += textareaValue[i];
-//         i += 4;
-//       } else if (textareaValue[i] === "i") {
-//         textOutput += textareaValue[i];
-//         i += 3;
-//       } else if (textareaValue[i] === "o") {
-//         textOutput += textareaValue[i];
-//         i += 3;
-//       } else if (textareaValue[i] === "u") {
-//         textOutput += textareaValue[i];
-//         i += 3;
-//       } else {
-//         textOutput += textareaValue[i];
-//       }
-//     }
-
-//     contentAside.style.display = "none";
-//     aside.style.justifyContent = "space-between";
-
-//     texareaAside.style.display = "block";
-//     texareaAside.classList.add("textarea");
-//     texareaAside.textContent = textOutput;
-
-//     copy();
-//   });
-// }
-// descencriptar();

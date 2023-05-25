@@ -20,7 +20,7 @@ textarea {
   font-family: "Inter", sans-serif;
   font-size: 32px;
   flex-grow: 1;
-  padding-top: 40px;
+  padding: 15px;
   resize: none;
   outline: none;
 }
@@ -60,6 +60,10 @@ form {
   height: 100%;
 }
 
+.textarea-entrada-invalido {
+  box-shadow: 0 0 10px 0 red;
+}
+
 /*  */
 .img-paragraph {
   align-items: center;
@@ -78,6 +82,7 @@ form {
   border-radius: 24px;
   border: 1px solid #0a3871;
   color: var(--dark-blue);
+  cursor: pointer;
   font-size: 16px;
   line-height: 19px;
   margin-bottom: 20px;
